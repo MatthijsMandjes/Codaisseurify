@@ -12,8 +12,11 @@ class SongsController < ApplicationController
 
   def create
     @song = @artist.songs.new(song_params.merge(artist_id: params[:artist_id]))
-    @song.save
-    redirect_to artist_path(@artist.id), notice: "Song succesfully added!"
+    if @song.save
+      redirect_to artist_path(@artist.id), notice: "Song succesfully added!"
+    else
+      render :new
+    end
   end
 
   def edit
@@ -24,7 +27,7 @@ class SongsController < ApplicationController
     if @song.update_attributes(song_params)
       redirect_to artist_path(@song.artist_id)
     else
-      render 'form'
+      render :edit
     end
   end
 

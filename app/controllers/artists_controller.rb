@@ -2,9 +2,9 @@ class ArtistsController < ApplicationController
   before_action :set_artist, only: [:show, :new, :destroy]
   def index
    @artists = Artist.all
-
   end
   def show
+
     @songs = @artist.songs
   end
   def new
@@ -13,7 +13,7 @@ class ArtistsController < ApplicationController
 
   def destroy
     @artist.destroy
-    redirect_to root_path
+    redirect_to root_path, notice: "Artist succesfully removed!"
   end
 
   def set_artist
