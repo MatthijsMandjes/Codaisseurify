@@ -1,10 +1,10 @@
 <h1>List of artists</h1>
 
-
+<table>
 <% @artists.each do |artist| %>
-
-  <p>
-    <%= link_to artist.name, artist_path(artist.id) %>
-  </p>
-
+  <tr>
+    <td><%= link_to artist.name, artist_path(artist.id) %></td>
+    <td><%= link_to "Delete", artist_path(artist), method: :delete, data: { confirm: "Are you sure?" } %></td>
+  </tr>
 <% end %>
+</table>
