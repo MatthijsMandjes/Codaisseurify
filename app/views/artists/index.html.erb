@@ -3,10 +3,9 @@
 <table>
 <% @artists.each do |artist| %>
   <tr>
-    <% @photos = Photo.where(artist_id: artist.id) %>
-    <% @photos.each do |photo| %>
-      <td><%= image_tag photo.image, style: 'width: 100px' %></td>
-    <% end %>
+
+
+    <td><%= image_tag artist.image, style: 'width: 100px' %></td>
     <td><%= link_to artist.name, artist_path(artist.id) %></td>
     <td><%= link_to "Delete", artist_path(artist), method: :delete, data: { confirm: "Are you sure?" } %></td>
 
