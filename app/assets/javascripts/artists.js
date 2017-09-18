@@ -1,17 +1,30 @@
-function addSong(){
-  var newSong = { name: name }
+
+function createSong(){
+  var newSong = { name: name, price: price };
 
   $.ajax({
     type: "POST",
-    url: "/artists.json",
+    url: "/artists/31/songs/150.json",
     data: JSON.stringify({
-        song: newSong
+    song: newSong
     }),
     contentType: "application/json",
-    dataType: "json"})
+    dataType: "json"
+  })
+    .done(function(data) {
+      console.log(data);
 
+      alert("test2");
+    })
+    .fail(function(error) {
+      testlog = console.log(error);
+      alert("test3");
 
+    });
 }
+
+
+
 
 function update() {
   // $("#total-count").html($(".todo").length);
@@ -19,6 +32,10 @@ function update() {
   // $("#todo-count").html($(".todo").length - $(".completed").length);
 }
 
+$(document).ready(function() {
+  $("button").bind('click', createSong);
+
+});
 
 
 
@@ -47,22 +64,22 @@ function update() {
 //     contentType: "application/json",
 //     dataType: "json"})
 //
-//     .fail(function(error) {
-//       console.log(error);
-//       alert("Uh oh! Could not change the completed state of this todo!");
-//     })
-//
-//     .done(function(data) {
-//       console.log(data);
-//
-//       if (data.completed) {
-//         listItem.addClass("completed");
-//       } else {
-//         listItem.removeClass("completed");
-//       }
-//
-//       updateCounters();
-//     });
+    // .fail(function(error) {
+    //   console.log(error);
+    //   alert("Uh oh! Could not change the completed state of this todo!");
+    // })
+    //
+    // .done(function(data) {
+    //   console.log(data);
+    //
+    //   if (data.completed) {
+    //     listItem.addClass("completed");
+    //   } else {
+    //     listItem.removeClass("completed");
+    //   }
+    //
+    //   updateCounters();
+    // });
 // }
 //
 // function updateCounters() {
@@ -113,12 +130,12 @@ function update() {
 //       updateCounters();
 //     })
 //
-//     .fail(function(error) {
-//       console.log(error);
-//
-//       error_message = error.responseJSON.title[0];
-//       showError(error_message);
-//     });
+    // .fail(function(error) {
+    //   console.log(error);
+    //
+    //   error_message = error.responseJSON.title[0];
+    //   showError(error_message);
+    // });
 // }
 //
 // function showError(message) {

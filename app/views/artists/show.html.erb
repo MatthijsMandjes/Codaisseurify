@@ -1,6 +1,6 @@
 <h1><%= @artist.name %></h1>
 
-<table>
+<table id="songlist">
 <% @songs.each do |song| %>
 <tr>
     <td><%= song.name %></td>
@@ -10,4 +10,4 @@
 <% end %>
 </table>
 <%= link_to "Back", root_path %>
-<%= link_to "Add song", new_artist_song_path(@artist) %>
+<%= render 'songs/form' %>

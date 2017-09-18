@@ -1,16 +1,17 @@
 <%= form_for [@artist, @song] do |f| %>
-  <div class="form-group">
-    <label>Name</label>
-    <%= f.text_field :name %>
-  </div>
-  <div class="form-group">
-    <label>Price</label>
-    <%= f.text_field :price %>
-  </div>
-  <div class="form-group">
-    <label>Activate</label>
-    <%= f.text_field :active %>
-  </div>
-  <%= f.submit "Save" %>
+
+    <div class="form-group">
+      <label>Name</label>
+      <%= f.text_field :name %>
+    </div>
+    <div class="form-group">
+      <label>Price</label>
+      <%= f.text_field :price %>
+    </div>
+    <div class="form-group">
+      <label>Activate</label>
+      <%= f.text_field :active %>
+    </div>
+    <button> Save </button>
   <%= link_to "Back", root_path %>
 <% end %>
