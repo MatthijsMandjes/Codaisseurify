@@ -3,11 +3,12 @@
 <table id="songlist">
 <% @songs.each do |song| %>
 <tr>
-    <td><%= song.name %></td>
+    <td id="<%= @artist.id %>"><%= song.name %></td>
     <td><%= link_to "Edit", edit_artist_song_path(@artist.id, song) %></td>
-    <td><%= link_to "Delete", artist_song_path(@artist.id, song.id), method: :delete, data: { confirm: "Are you sure?" } %></td>
+    <td><%= link_to 'Delete', '#', onclick: "deleteSong(" + @artist.id.to_s + "," + song.id.to_s + ")" %> </td>
+    <!-- <td><%= link_to "Delete", artist_song_path(@artist.id, song.id), method: :delete, data: { confirm: "Are you sure?" } %></td> -->
 </tr>
 <% end %>
 </table>
-<%= link_to "Back", root_path %>
+
 <%= render 'songs/form' %>

@@ -1,4 +1,5 @@
 class Api::SongsController < ApplicationController
+  before_action :set_song, only: [:destroy]
   def index
     render status: 200, json: {
       songs: Song.all
@@ -20,6 +21,13 @@ class Api::SongsController < ApplicationController
    else
      render status: 422, json: @song.errors.to_json
    end
+  end
+  def destroy
+    @song.destroy
+  end
+
+  def set_song
+    @song = Song.find(params[:id])
   end
   def song_params
      params.require(:song).

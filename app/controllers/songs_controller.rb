@@ -42,7 +42,10 @@ class SongsController < ApplicationController
 
   def destroy
     @song.destroy
-    redirect_to artist_path(@song.artist_id)
+      respond_to do |format|
+        format.html { redirect_to todos_url, notice: 'Todo was successfully destroyed.' }
+        format.json { head :no_content }
+      end
   end
 
   def set_song

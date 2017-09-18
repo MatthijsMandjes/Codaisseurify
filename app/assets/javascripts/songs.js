@@ -3,7 +3,6 @@ function createSong(artist_id){
   event.preventDefault();
   var name = $('#name').val();
   var newSong = { name: name, artist_id: artist_id };
-  alert("test1");
   $.ajax({
     type: "POST",
     url: "/api/artists/" + artist_id + "/songs/",
@@ -16,18 +15,14 @@ function createSong(artist_id){
     .done(function(data) {
       console.log(data);
 
-      alert("test2");
     })
     .fail(function(error) {
       testlog = console.log(error);
-      alert("test3");
 
     });
 }
-
-
-
 function deleteSong(artist_id, song_id){
+  alert("test");
   $.ajax({
     type: "DELETE",
     url: "/api/artists/" + artist_id + "/songs/" + song_id,
@@ -35,6 +30,7 @@ function deleteSong(artist_id, song_id){
     dataType: "json"
   })
     .done(function(data) {
+      alert("test2");
       console.log(data);
     })
 }
