@@ -34,7 +34,16 @@ function deleteSong(artist_id, song_id){
       console.log(data);
     })
 }
-
-$(document).ready(function() {
-
-});
+function deleteAllSongs(artist_id){
+  alert("test");
+  $.ajax({
+    type: "DELETE",
+    url: "/api/artists/" + artist_id,
+    contentType: "application/json",
+    dataType: "json"
+  })
+    .done(function(data) {
+      alert("test2");
+      console.log(data);
+    })
+}
