@@ -6,18 +6,27 @@ class SongsController < ApplicationController
 
   end
 
+
+
   def new
     @song = Song.new
   end
 
   def create
     @song = @artist.songs.new(song_params.merge(artist_id: params[:artist_id]))
-    if @song.save
-      redirect_to artist_path(@artist.id), notice: "Song succesfully added!"
-    else
-      render :new
+    respond_to do |format|
+      if @song.save
+        format.html { redirect_to artist_path(@artist.id) }
+        format.json { render :songs, status: :created }
+      else
+        format.html { render :index }
+        format.json { render json: @song.errors, status: :unprocessable_entity }
+      end
     end
   end
+
+
+
 
   def edit
 
