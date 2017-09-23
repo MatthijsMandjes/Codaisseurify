@@ -1,12 +1,10 @@
 
 function createSong(){
   event.preventDefault();
-  alert("test");
   var name = $('#name').val();
   var price = $('#price').val();
   var artist_id = $("#addsong").attr("data-artistid");
   var song_id = $("#addsong").attr("data-songid");
-
 
   var newSong = { name: name, price: price, artist_id: artist_id };
   $.ajax({
@@ -20,11 +18,11 @@ function createSong(){
   })
     .done(function(data) {
       console.log(data);
-       $("#songlist").append(`
-         <tr id="${song_id}">
+       $("#songlist tbody").append(`
+         <tr id="song${song_id}">
               <td id=${artist_id}>${name}</td>
               <td><a href="/artists/${artist_id}/songs/${song_id}/edit">Edit</a></td>
-              <td><a class="deletesong" data-artistid="artist${artist_id}" data-songid="song${song_id}" href="#">Delete</a></td>
+              <td><a id="${song_id}" class="deletesong" data-artistid="artist${artist_id}" data-songid="song${song_id}" href="#" onclick="deleteSong(event)">Delete</a></td>
          </tr>`);
       song_id = parseInt(song_id) + 1;
       $("#addsong").attr("data-songid", song_id);
@@ -34,10 +32,9 @@ function createSong(){
 
     });
 }
-function deleteSong(){
+function deleteSong(event){
   var song_id = event.target.id;
   var artist_id = $(`#${song_id}`).attr("data-artistid");
-
   $.ajax({
     type: "DELETE",
     url: "/api/artists/" + artist_id + "/songs/" + song_id,

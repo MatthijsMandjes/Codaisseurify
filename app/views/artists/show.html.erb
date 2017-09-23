@@ -2,11 +2,10 @@
 
 <table id="songlist">
 <% @songs.each do |song| %>
-<tr id="song<%= song.id %>" >
+<tr id="song<%= song.id %>" class="test" >
     <td id="artist<%= @artist.id %>" ><%= song.name %></td>
     <td><%= link_to "Edit", edit_artist_song_path(@artist.id, song) %></td>
     <td><%= link_to 'Delete', '#', id: "#{song.id}", class: "deletesong", data: { artistid: "artist#{song.artist_id}", songid: "song#{song.id}" }  %> </td>
-    <!-- <td><%= link_to "Delete", artist_song_path(@artist.id, song.id), method: :delete, data: { confirm: "Are you sure?" } %></td> -->
 </tr>
 <% end %>
 </table>
