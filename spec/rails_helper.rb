@@ -33,7 +33,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
 
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
 
   config.infer_spec_type_from_file_location!
@@ -43,4 +43,7 @@ RSpec.configure do |config|
 
   config.include Capybara::DSL
 
+end
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
 end

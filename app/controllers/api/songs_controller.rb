@@ -32,6 +32,6 @@ class Api::SongsController < ApplicationController
   end
   def song_params
      params.require(:song).
-     permit(:name, :price, :active)
+     permit(:id, :name, :price, :active)
   end
 end

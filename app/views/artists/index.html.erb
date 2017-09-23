@@ -2,13 +2,13 @@
 
 <table>
 <% @artists.each do |artist| %>
-  <tr>
+  <tr id="artist<%= artist.id %>">
 
 
     <td><%= image_tag artist.image, style: 'width: 100px' %></td>
     <td><%= link_to artist.name, artist_path(artist.id) %></td>
     <!-- <td><%= link_to "Delete", artist_path(artist), method: :delete, data: { confirm: "Are you sure?" } %></td> -->
-    <td><%= link_to 'Delete', '#', onclick: "deleteAllSongs(" + artist.id.to_s + ")" %> </td>
+    <td><%= link_to 'Delete', '#', class: 'deleteartist', id: artist.id %> </td>
 
 
 
