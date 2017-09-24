@@ -17,12 +17,12 @@ feature 'Manage songs', js: true do
   scenario 'add a song' do
     addsong
     expect(page).to have_content('test')
-    sleep(1)
   end
   scenario 'delete a song' do
     addsong
     page.find(:css, ".deletesong").click
     expect(page).not_to have_content('test')
   end
+
 
 end

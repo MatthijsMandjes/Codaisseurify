@@ -5,7 +5,7 @@
 <tr id="song<%= song.id %>" class="test" >
     <td id="artist<%= @artist.id %>" ><%= song.name %></td>
     <td><%= link_to "Edit", edit_artist_song_path(@artist.id, song) %></td>
-    <td><%= link_to 'Delete', '#', id: "#{song.id}", class: "deletesong", data: { artistid: "artist#{song.artist_id}", songid: "song#{song.id}" }  %> </td>
+    <td><%= link_to 'Delete', '#', id: "#{song.id}", class: "deletesong", data: { artistid: "#{song.artist_id}", songid: "#{song.id}" }  %> </td>
 </tr>
 <% end %>
 </table>

@@ -22,8 +22,10 @@ function createSong(){
          <tr id="song${song_id}">
               <td id=${artist_id}>${name}</td>
               <td><a href="/artists/${artist_id}/songs/${song_id}/edit">Edit</a></td>
-              <td><a id="${song_id}" class="deletesong" data-artistid="artist${artist_id}" data-songid="song${song_id}" href="#" onclick="deleteSong(event)">Delete</a></td>
+              <td><a id="${song_id}" class="deletesong" data-artistid="${artist_id}" data-songid="${song_id}" href="#">Delete</a></td>
          </tr>`);
+      $(".deletesong").off().on('click', deleteSong);
+
       song_id = parseInt(song_id) + 1;
       $("#addsong").attr("data-songid", song_id);
     })
@@ -33,6 +35,7 @@ function createSong(){
     });
 }
 function deleteSong(event){
+  event.preventDefault();
   var song_id = event.target.id;
   var artist_id = $(`#${song_id}`).attr("data-artistid");
   $.ajax({
