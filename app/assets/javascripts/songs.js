@@ -5,8 +5,7 @@ function createSong(){
   var price = $('#price').val();
   var artist_id = $("#addsong").attr("data-artistid");
   var song_id = $("#addsong").attr("data-songid");
-
-  var newSong = { name: name, price: price, artist_id: artist_id };
+  var newSong = { id: song_id, name: name, price: price, artist_id: artist_id };
   $.ajax({
     type: "POST",
     url: "/api/artists/" + artist_id + "/songs/",
@@ -18,6 +17,7 @@ function createSong(){
   })
     .done(function(data) {
       console.log(data);
+
        $("#songlist tbody").append(`
          <tr id="song${song_id}">
               <td id=${artist_id}>${name}</td>
