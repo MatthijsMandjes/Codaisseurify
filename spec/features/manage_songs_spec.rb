@@ -11,7 +11,7 @@ feature 'Manage songs', js: true do
     fill_in 'song[active]', with: true
 
     page.execute_script("$('form').submit()")
-
+    sleep(1)
 
   end
   scenario 'add a song' do
